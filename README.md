@@ -481,6 +481,7 @@ https://api.didipays.com/order/deposit/create?apiKey=sf0897fads97fd89a0a7f&apiVe
 ### <span id="part10">Part 10：JRDD平台支付方式对应ID列表</span>
 | 支付方式 | 对应ID |
 |:--|:--|
+| USDT(ERC20) | 10001 |
 | 中国工商银行 | 4 | 
 | 中国农业银行 | 5 | 
 | 中国银行 | 6 | 
