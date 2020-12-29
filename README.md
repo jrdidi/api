@@ -145,7 +145,7 @@ https://api.didipays.com/order/withdraw/create?appId=[由JRDD平台分配的appI
 ```
 本接口的响应返回的内容格式依赖于responseFormat这个字段。  
 
-如果responseFormat=json，则响应返回的内容是标准JSON格式的订单详情信息;  
+如果responseFormat=json，则响应返回的内容是标准JSON格式的订单详情信息; 失败时会返回类似下面结构：{"code":"100017","msg":"工作时间单笔限额最小720元"}
 如果responseFormat=html，则响应返回的内容是一个HTML页面。
 
 以下会根据两种不同返回格式，对API调用方法以及返回内容进行分开解释说明。
