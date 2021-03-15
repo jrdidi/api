@@ -25,7 +25,7 @@
 
 ### <span id="part02">Part 02：商家用户创建“充值/支付”订单接入流程</span>
 
-* **Base URI**：https://api.didipays.com/order/deposit/create
+* **Base URI**：https://api.didipays.co/order/deposit/create
 
 * **HTTP请求方法**：POST
 
@@ -43,7 +43,7 @@
 * **完整的API请求URL**：
  
 ```
-https://api.didipays.com/order/deposit/create?appId=[由JRDD平台分配的appId]&apiKey=[由JRDD平台分配的apiKey]  
+https://api.didipays.co/order/deposit/create?appId=[由JRDD平台分配的appId]&apiKey=[由JRDD平台分配的apiKey]  
 &inputCharset=UTF-8&apiVersion=1.1&appSignType=HMAC-SHA256&appSignContent=[签名内容]
 ```
 
@@ -55,7 +55,7 @@ https://api.didipays.com/order/deposit/create?appId=[由JRDD平台分配的appId
 | appOrderId | 由商家系统内部生成的订单ID(必填，且这个orderId也要在商家系统内保证全局永久唯一，否则会发生订单混乱问题) |
 | orderAmount | 本次订单中下单的金额或币的数量（必填。注意，人民币等法币的金额也可以理解为是数量。如果商家的系统没有使用人民币，而是有自己自定义的币种，见orderCoinSymbol字段，则本参数是用户要充值或购买的该自定义币种的数量即可；如果商家的系统直接用人民币，则本参数直接填写用户要充值或支付的人民币金额即可） | 是 |
 | orderCoinSymbol | 订单金额符号，支持：CNY/HKD/TWD/SGD/IDR/VND/MYR/USD。默认只支持CNY，其它的币种的支持需要找管理员开通。 |
-| orderPayTypeId | 本次订单中用户主动选择使用的付款方式（必填。微信 = 1、支付宝 = 2、云闪付 = 3、工商银行 = 4 ...详见《JRDD平台支付方式对应ID列表》注：暂时不支持微信/支付宝/云闪付！)。必须是和 orderCoinSymbol 匹配的付款方式，比如 orderCoinSymbol 为 HKD 时，则只能选择 Hong Kong 的银行卡付款方式。要查询系统中支持哪些国家和地区和银行卡，可以参考 https://api.didipays.com/order/banks/ |
+| orderPayTypeId | 本次订单中用户主动选择使用的付款方式（必填。微信 = 1、支付宝 = 2、云闪付 = 3、工商银行 = 4 ...详见《JRDD平台支付方式对应ID列表》注：暂时不支持微信/支付宝/云闪付！)。必须是和 orderCoinSymbol 匹配的付款方式，比如 orderCoinSymbol 为 HKD 时，则只能选择 Hong Kong 的银行卡付款方式。要查询系统中支持哪些国家和地区和银行卡，可以参考 https://api.didipays.co/order/banks/ |
 | orderRemark | 订单备注（非必填） |
 | appServerNotifyUrl | 必填。由商家提供的服务器端负责接收订单信息更新异步通知的接口，订单信息更新异步通知消息由JRDD平台主动发起，其通知方式和参数列表详见本文档[Part 06：商家服务器接收订单信息更新异步通知](#part06) |
 | appReturnPageUrl | 必填。在用户支付完成之后，JRDD会根据商家传入的appReturnPageUrl参数，通过GET请求的形式将部分支付结果参数回传到商户系统 |
@@ -82,7 +82,7 @@ https://api.didipays.com/order/deposit/create?appId=[由JRDD平台分配的appId
 
 ### <span id="part03">Part 03：商家用户创建“提现/收款”订单接入流程</span>
 
-* **Base URI**：https://api.didipays.com/order/withdraw/create
+* **Base URI**：https://api.didipays.co/order/withdraw/create
 
 * **HTTP请求方法**： POST
 
@@ -100,7 +100,7 @@ https://api.didipays.com/order/deposit/create?appId=[由JRDD平台分配的appId
 * **完整的API请求URL**： 
  
 ```
-https://api.didipays.com/order/withdraw/create?appId=[由JRDD平台分配的appId]&apiKey=[由JRDD平台分配的apiKey]  
+https://api.didipays.co/order/withdraw/create?appId=[由JRDD平台分配的appId]&apiKey=[由JRDD平台分配的apiKey]  
 &inputCharset=UTF-8&apiVersion=1.1&appSignType=HMAC-SHA256&appSignContent=[签名内容]
 ```
 * **POST请求参数列表（以下参数需通过 application/x-www-form-urlencoded 请求格式提交给上述完整请求URL）**
@@ -111,7 +111,7 @@ https://api.didipays.com/order/withdraw/create?appId=[由JRDD平台分配的appI
 | appOrderId | 由商家系统内部生成的订单ID(必填，且这个orderId也要在商家系统内保证全局永久唯一，否则会发生订单混乱问题) |
 | orderAmount | 本次订单中下单的金额或币的数量（必填。注意，人民币等法币的金额也可以理解为是数量。如果商家的系统没有使用人民币，而是有自己自定义的币种，见orderCoinSymbol字段，则本参数是用户要充值或购买的该自定义币种的数量即可；如果商家的系统直接用人民币，则本参数直接填写用户要充值或支付的人民币金额即可） |
 | orderCoinSymbol | 订单金额符号，支持：CNY/HKD/TWD/SGD/IDR/VND/MYR/USD。默认只支持CNY，其它的币种的支持需要找管理员开通。 |
-| orderPayTypeId | 本次订单中用户主动选择使用的付款方式（必填。微信 = 1、支付宝 = 2、云闪付 = 3、工商银行 = 4 ...详见《JRDD平台支付方式对应ID列表》，注：暂时不支持微信/支付宝/云闪付！)。必须是和 orderCoinSymbol 匹配的付款方式，比如 orderCoinSymbol 为 HKD 时，则只能选择 Hong Kong 的银行卡付款方式。要查询系统中支持哪些国家和地区和银行卡，可以参考 https://api.didipays.com/order/banks/ |
+| orderPayTypeId | 本次订单中用户主动选择使用的付款方式（必填。微信 = 1、支付宝 = 2、云闪付 = 3、工商银行 = 4 ...详见《JRDD平台支付方式对应ID列表》，注：暂时不支持微信/支付宝/云闪付！)。必须是和 orderCoinSymbol 匹配的付款方式，比如 orderCoinSymbol 为 HKD 时，则只能选择 Hong Kong 的银行卡付款方式。要查询系统中支持哪些国家和地区和银行卡，可以参考 https://api.didipays.co/order/banks/ |
 | orderRemark | 订单备注（非必填） |
 | payAccountId | 收款账户(必填。本字段可指定支付宝支付宝账户名或者银行卡卡号) |
 | payQRUrl | 收款二维码（微信、支付宝或者云闪付）图片链接地址，仅当orderPayTypeId的值为1、2、3（即微信、支付宝或云闪付）的时候 |
@@ -181,7 +181,7 @@ https://api.didipays.com/order/withdraw/create?appId=[由JRDD平台分配的appI
 
 ### <span id="part04">Part 04：商家服务器端查询订单的API及返回响应参数</span>
 
-* **Base URI**：https://api.didipays.com/order/query
+* **Base URI**：https://api.didipays.co/order/query
 
 * **HTTP请求方法**：GET
 
@@ -199,7 +199,7 @@ https://api.didipays.com/order/withdraw/create?appId=[由JRDD平台分配的appI
 * **完整的API请求URL**： 
  
 ```
-https://api.didipays.com/order/query?appId=[由JRDD平台分配的appId]&apiKey=[由JRDD平台分配的apiKey]  
+https://api.didipays.co/order/query?appId=[由JRDD平台分配的appId]&apiKey=[由JRDD平台分配的apiKey]  
 &inputCharset=UTF-8&apiVersion=1.1&appSignType=HMAC-SHA256&appSignContent=[签名内容]
 ```
 
@@ -441,7 +441,7 @@ apiKey=sf0897fads97fd89a0a7f&apiVersion=1.1&appId=101&appOrderId=No1014231121232
 * 第三步 ：将第二步生成的加密后字符串作为`appSignContent`的值附加到完整的请求URL中
 
 ```
-https://api.didipays.com/order/deposit/create?apiKey=sf0897fads97fd89a0a7f&apiVersion=1.1&appId=101&appSignType=HMAC-SHA256&inputCharset=UTF-8  
+https://api.didipays.co/order/deposit/create?apiKey=sf0897fads97fd89a0a7f&apiVersion=1.1&appId=101&appSignType=HMAC-SHA256&inputCharset=UTF-8  
 &appSignContent=12d6c6ea63429a0a71435b42aaca659d54715b8e62a02b3c7a475f2c7a577138
 ```
 
@@ -458,7 +458,7 @@ https://api.didipays.com/order/deposit/create?apiKey=sf0897fads97fd89a0a7f&apiVe
 		* appReturnPageUrl=https%3A%2F%2Fwww.mydomain.com%2Freturn
 	* API请求地址：  
 ```
-https://api.didipays.com/order/deposit/create?apiKey=sf0897fads97fd89a0a7f&apiVersion=1.1&appId=101&appSignType=HMAC-SHA256&inputCharset=UTF-8&appSignContent=12d6c6ea63429a0a71435b42aaca659d54715b8e62a02b3c7a475f2c7a577138
+https://api.didipays.co/order/deposit/create?apiKey=sf0897fads97fd89a0a7f&apiVersion=1.1&appId=101&appSignType=HMAC-SHA256&inputCharset=UTF-8&appSignContent=12d6c6ea63429a0a71435b42aaca659d54715b8e62a02b3c7a475f2c7a577138
 ```
 
 * **验签方法（流程与规则）<font color=#ff4500>主要用于商家接收回调时验签的场景</font>**
@@ -505,12 +505,12 @@ https://api.didipays.com/order/deposit/create?apiKey=sf0897fads97fd89a0a7f&apiVe
 | 农村商业银行 | 24 |
 | 宁波银行 | 25 |
 
-- 中国大陆银行列表请参考： https://api.didipays.com/order/banks?nationCode=86  
-- 越南银行列表请参考： https://api.didipays.com/order/banks?nationCode=84
-- 马来西亚银行列表请参考： https://api.didipays.com/order/banks?nationCode=60
-- 香港银行列表请参考： https://api.didipays.com/order/banks?nationCode=852
-- 美国银行列表请参考： https://api.didipays.com/order/banks?nationCode=1
-- 新加坡银行列表请参考： https://api.didipays.com/order/banks?nationCode=65
-- 印度尼西亚银行列表请参考： https://api.didipays.com/order/banks?nationCode=62
+- 中国大陆银行列表请参考： https://api.didipays.co/order/banks?nationCode=86  
+- 越南银行列表请参考： https://api.didipays.co/order/banks?nationCode=84
+- 马来西亚银行列表请参考： https://api.didipays.co/order/banks?nationCode=60
+- 香港银行列表请参考： https://api.didipays.co/order/banks?nationCode=852
+- 美国银行列表请参考： https://api.didipays.co/order/banks?nationCode=1
+- 新加坡银行列表请参考： https://api.didipays.co/order/banks?nationCode=65
+- 印度尼西亚银行列表请参考： https://api.didipays.co/order/banks?nationCode=62
 
-详见：[JRDD平台支付方式对应ID列表](https://api.didipays.com/order/banks/)
+详见：[JRDD平台支付方式对应ID列表](https://api.didipays.co/order/banks/)
