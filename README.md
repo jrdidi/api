@@ -55,7 +55,7 @@ https://api.didipays.co/order/deposit/create?appId=[由JRDD平台分配的appId]
 | appOrderId | 由商家系统内部生成的订单ID(必填，且这个orderId也要在商家系统内保证全局永久唯一，否则会发生订单混乱问题) |
 | orderAmount | 本次订单中下单的金额或币的数量（必填。注意，人民币等法币的金额也可以理解为是数量。如果商家的系统没有使用人民币，而是有自己自定义的币种，见orderCoinSymbol字段，则本参数是用户要充值或购买的该自定义币种的数量即可；如果商家的系统直接用人民币，则本参数直接填写用户要充值或支付的人民币金额即可） | 是 |
 | orderCoinSymbol | 订单金额符号，支持：CNY/HKD/TWD/SGD/IDR/VND/MYR/USD。默认只支持CNY，其它的币种的支持需要找管理员开通。 |
-| orderPayTypeId | 本次订单中用户主动选择使用的付款方式（必填。微信 = 1、支付宝 = 2、云闪付 = 3、工商银行 = 4 ...详见《JRDD平台支付方式对应ID列表》注：暂时不支持微信/支付宝/云闪付！)。必须是和 orderCoinSymbol 匹配的付款方式，比如 orderCoinSymbol 为 HKD 时，则只能选择 Hong Kong 的银行卡付款方式。要查询系统中支持哪些国家和地区和银行卡，可以参考 https://api.didipays.co/order/banks/ |
+| orderPayTypeId | 本次订单中用户主动选择使用的付款方式（必填。工商银行 = 4 ...详见《JRDD平台支付方式对应ID列表》注：暂时不支持微信/支付宝/云闪付！)。必须是和 orderCoinSymbol 匹配的付款方式，比如 orderCoinSymbol 为 HKD 时，则只能选择 Hong Kong 的银行卡付款方式。要查询系统中支持哪些国家和地区和银行卡，可以参考 https://api.didipays.co/order/banks/ |
 | orderRemark | 订单备注（非必填） |
 | appServerNotifyUrl | 必填。由商家提供的服务器端负责接收订单信息更新异步通知的接口，订单信息更新异步通知消息由JRDD平台主动发起，其通知方式和参数列表详见本文档[Part 06：商家服务器接收订单信息更新异步通知](#part06) |
 | appReturnPageUrl | 必填。在用户支付完成之后，JRDD会根据商家传入的appReturnPageUrl参数，通过GET请求的形式将部分支付结果参数回传到商户系统 |
@@ -111,7 +111,7 @@ https://api.didipays.co/order/withdraw/create?appId=[由JRDD平台分配的appId
 | appOrderId | 由商家系统内部生成的订单ID(必填，且这个orderId也要在商家系统内保证全局永久唯一，否则会发生订单混乱问题) |
 | orderAmount | 本次订单中下单的金额或币的数量（必填。注意，人民币等法币的金额也可以理解为是数量。如果商家的系统没有使用人民币，而是有自己自定义的币种，见orderCoinSymbol字段，则本参数是用户要充值或购买的该自定义币种的数量即可；如果商家的系统直接用人民币，则本参数直接填写用户要充值或支付的人民币金额即可） |
 | orderCoinSymbol | 订单金额符号，支持：CNY/HKD/TWD/SGD/IDR/VND/MYR/USD。默认只支持CNY，其它的币种的支持需要找管理员开通。 |
-| orderPayTypeId | 本次订单中用户主动选择使用的付款方式（必填。微信 = 1、支付宝 = 2、云闪付 = 3、工商银行 = 4 ...详见《JRDD平台支付方式对应ID列表》，注：暂时不支持微信/支付宝/云闪付！)。必须是和 orderCoinSymbol 匹配的付款方式，比如 orderCoinSymbol 为 HKD 时，则只能选择 Hong Kong 的银行卡付款方式。要查询系统中支持哪些国家和地区和银行卡，可以参考 https://api.didipays.co/order/banks/ |
+| orderPayTypeId | 本次订单中用户主动选择使用的付款方式（必填。工商银行 = 4 ...详见《JRDD平台支付方式对应ID列表》，注：暂时不支持微信/支付宝/云闪付！)。必须是和 orderCoinSymbol 匹配的付款方式，比如 orderCoinSymbol 为 HKD 时，则只能选择 Hong Kong 的银行卡付款方式。要查询系统中支持哪些国家和地区和银行卡，可以参考 https://api.didipays.co/order/banks/ |
 | orderRemark | 订单备注（非必填） |
 | payAccountId | 收款账户(必填。本字段可指定支付宝支付宝账户名或者银行卡卡号) |
 | payQRUrl | 收款二维码（微信、支付宝或者云闪付）图片链接地址，仅当orderPayTypeId的值为1、2、3（即微信、支付宝或云闪付）的时候 |
