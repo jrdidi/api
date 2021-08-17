@@ -482,6 +482,7 @@ https://api.didipays.co/order/deposit/create?apiKey=sf0897fads97fd89a0a7f&apiVer
 | 支付方式 | 对应ID |
 |:--|:--|
 | USDT(ERC20) | 10001 |
+| BTC | 10002 |
 | 中国工商银行 | 4 | 
 | 中国农业银行 | 5 | 
 | 中国银行 | 6 | 
